@@ -1,0 +1,42 @@
+
+<div class="container">  <h2 style="font-style: italic; text-shadow:10px 10px 5px lightblue;" class="mt-3 mb-3">Liste des Produits</h2></div>
+<div class="container form-group mt-3 mb-3 " >
+
+  <span class="fa fa-search"></span>   Rechercher un produit par Mot clé  
+    <div class="col-sm-5">
+      <input  type="text" class="form-control" placeholder="Rechercher" [(ngModel)]="mot"> 
+    </div>
+</div>
+
+<div class="container">
+    <table class="table " >
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col" >ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Categorie</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor=" let p of produits">
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.id}}</td>
+            <td><a routerLink="/details/{{p.id}}">{{p.nomp|uppercase}}</a></td>
+            <td>{{p.prix | currency: '$$'}}</td>
+            <td>{{p.quantite}}</td>
+            <td>{{p.categories.nomg}}</td>
+            <td>
+                <button class="myButton" [routerLink]="['/formulaire', p.id]">  <span class="fa fa-pencil-square-o"></span></button>
+                <button class="myBut" (click)="supprimerProduit(p.id)" style="margin-left:2px;"> 
+                  <span class="fa fa-trash"></span>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-primary mt-4" [routerLink]="'/formulaire'" > Créer un produit <span class="fa fa-plus"></span></a>
+</div>

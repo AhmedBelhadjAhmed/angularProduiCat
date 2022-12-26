@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 style="font-style: italic; text-shadow:10px 10px 5px lightblue;"class="mt-3 mb-3">Ajouter une Categorie</h2>
+
+    <form (ngSubmit)="ajouter(f)" #f=ngForm >
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom de la categorie</label>
+            <div class="col-sm-5">
+            <input type="text" class="form-control" name="nom" [(ngModel)]="Category.nomg"  ngModel   required  #nom="ngModel" [ngClass]="{'is-invalid':!nom.valid && nom.touched}" placeholder="Enter le nom de la categorie!">
+            <span style= color:red *ngIf="!nom.valid && nom.touched "> Champs obligatoire !!</span>
+            </div>
+        </div>
+    
+        <button [disabled]="!f.valid"  type="submit" class="btn btn-primary  mt-2" (click)="creerCategorie()" *ngIf="!Category.id"><span class="fa fa-plus"></span>  Ajouter une Categorie</button>
+        <button [disabled]="!nom.valid && nom.touched" type="submit" class="btn btn-warning  mt-2" (click)="editCategorie()"  *ngIf="Category.id"><span class="fa fa-pencil-square-o"></span>  Sauvegarder les changements</button>
+       
+     
+    </form>
+</div>

@@ -1,0 +1,24 @@
+
+<div class="container">
+  <h2 style="font-style: italic; text-shadow:10px 10px 5px lightblue;"class="mt-3 mb-3">Liste des Categories</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Categorie</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor=" let g of categories">
+            <th scope="row">{{g.id}}</th>
+            <td>{{g.nomg}}</td>
+            <td>
+                <button class="btn btn-info me-2" [routerLink]="['/formulairecat', g.id]">Editer   <span class="fa fa-pencil-square-o"></span></button>
+                <button class="btn btn-danger" (click)="supprimercategorie(g.id)"> Supprimer <span class="fa fa-trash"></span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-primary mb-3 mt-3" [routerLink]="'/formulairecat'" >   Créer une Categorie  <span class="fa fa-plus"></span></a>
+</div>
